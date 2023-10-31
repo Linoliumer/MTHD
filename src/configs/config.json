@@ -1,9 +1,9 @@
 {
   "TELEGRAM": {
-    "TOKEN" : "5628797131:AAHjRTSKejHe-Fi2uIvNWn_Ssc6woD3HjS0"
+    "TOKEN" : ""
   },
   "WEBHOOK": {
-    "HOST": "https://39d1-95-24-235-109.ngrok.io",
+    "HOST": "",
     "PATH": "/bot/"
   },
   "WEBAPP": {
@@ -15,7 +15,7 @@
     "DB_PORT": "5432",
     "DB_NAME": "test",
     "DB_USER": "postgres",
-    "DB_PASS": "root"
+    "DB_PASS": ""
   },
   "OTHER_CONST": {
     "TIME_AFK": 300,
@@ -131,7 +131,7 @@
   },
   "INCORRECT_TEMPLATE": [],
   "PAYMENTS": {
-    "TOKEN": "381764678:TEST:55895",
+    "TOKEN": "",
     "SUBSCRIBE": {
       "TITLE": "МЕТОД тренажёр для подготовки к ЕГЭ",
       "LABEL": "МЕТОД тренажёр для подготовки к ЕГЭ",
