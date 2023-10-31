@@ -1,0 +1,150 @@
+{% extends 'wrapper_index.html' %}
+
+{% block head %}
+    <title>Question Add | ExamBot</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/questions_add.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="question container-fluid text-center col-12 col-md-5">
+  <div class="question_form">
+    <h3>Add Question</h3>
+    <hr align="center" width="200" size="2" color="#45A29E"/>
+    <div class="form-group">
+      <label for="type_question">Номер вопроса</label>
+      <textarea class="form-control" id="type_question" rows="1" ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="section">Код Раздела</label>
+      <select class="form-control" name="section" id="section">
+        <option value=1 selected>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
+        <option value=5>5</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="element">Код контролируемого элемента</label>
+      <select class="form-control" name="element" id="element">
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="answer_question">Задание</label>
+      <textarea class="form-control" id="question_text" rows="4"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="answer_question">Ответ</label>
+      <textarea class="form-control" id="answer_question" rows="1"></textarea>
+    </div>
+    <a href="" class="save-button" id="save-send">Enter</a>
+    <hr align="center" width="200" size="2" color="#45A29E"/>
+    <div class="form-group">
+      <label for="uploadCSV">Upload CSV File</label>
+      <input type="file" class="form-control-file" id="uploadCSV">
+    </div>
+    <a href="" class="save-button" id="csv-send">Upload</a>
+  </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<!-- Optional JavaScript -->
+  <script>
+    var elements = {
+      1: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+      2: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+      3: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+      4: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+      5: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+    };
+    var section = document.getElementById("section");
+    var element = document.querySelector("#element");
+    window.onload = selectSection;
+    section.onchange = selectSection;
+
+    function selectSection(ev){
+      element.innerHTML = "";
+      var c = this.value || 1, o;
+      for(let i = 0; i < elements[c].length; i++){
+        o = new Option(elements[c][i],i,false,false);
+        element.add(o);
+      };
+    }
+  </script>
+  <script>
+      $(document).ready(function(){
+        $('#save-send').on('click', function(e) {
+          e.preventDefault();
+          Noty.overrideDefaults({
+            layout   : 'bottomRight',
+            theme: 'sunset',
+            timeout: 3000,
+          });
+          var data = new FormData();
+          data.append("type_question", $("#type_question").val());
+          data.append("section", $("#section").val());
+          data.append("element", +$("#element").val()+1);
+          data.append("question_text", $("#question_text").val());
+          data.append("answer_user", $("#answer_question").val());
+          $.ajax({
+            url: "/questions/add/create",
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function(result){
+              $("#type_question").val("");
+              $("#section").val(1);
+              $("#element").val("");
+              $("#question_text").val("");
+              $("#answer_question").val("");
+              new Noty({
+                text: 'Успешно',
+              }).show();
+            },
+            error: function(data){
+              new Noty({
+                text: 'Ошибка',
+              }).show();
+            }
+          });
+          return !1;
+        });
+      });
+    </script>
+    <script>
+      $(document).ready(function(){
+        $('#csv-send').on('click', function(e) {
+          e.preventDefault();
+          Noty.overrideDefaults({
+            layout   : 'bottomRight',
+            theme: 'sunset',
+            timeout: 3000,
+          });
+          var data = new FormData();
+          data.append("upload_file", $("#uploadCSV")[0].files[0]);
+          $.ajax({
+            url: "/questions/add/csv",
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function(result){
+              new Noty({
+                text: 'Успешно',
+              }).show();
+            },
+            error: function(data){
+              new Noty({
+                text: 'Ошибка',
+              }).show();
+            }
+          });
+          return !1;
+        });
+      });
+   </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+{% endblock %}

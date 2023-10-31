@@ -1,0 +1,31 @@
+{% extends 'wrapper_index.html' %}
+
+{% block head %}
+    <title>Question | ExamBot</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/questions.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="questions_menu container-fluid text-center col-12 col-md-10">
+  <div class="questions_container">
+    <h3>Questions</h3>
+    <hr align="center" width="200" size="2" color="#45A29E"/>
+    <div class="row">
+      <div class="col mx-auto">
+        <div class="element">
+          <h4>Add Question</h4>
+          <hr align="center" width="200" size="2" color="#45A29E"/>
+          <a href="/questions/add" class="button">Select</a>
+        </div>
+      </div>
+      <div class="col mx-auto">
+        <div class="element">
+          <h4>Show Table</h4>
+          <hr align="center" width="200" size="2" color="#45A29E"/>
+          <a href="/questions/table/1" class="button">Select</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

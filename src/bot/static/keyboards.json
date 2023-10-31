@@ -1,0 +1,149 @@
+{
+  "MAIN": [
+    [
+      {"text": "\uD83D\uDCDD Начать Cессию", "type": "callback", "data": "menu:session"}
+    ],
+    [
+      {"text": "\uD83D\uDCCA Cтатистика", "type": "callback", "data": "menu:statistic"}
+    ],
+    [
+      {"text": "\uD83D\uDCDA Профиль", "type": "callback", "data": "menu:profile"}
+    ],
+    [
+      {"text": "❔ Информация", "type": "callback", "data": "menu:info"},
+      {"text": "\uD83D\uDDFF Поддержка", "type": "callback", "data": "menu:report"}
+    ]
+  ],
+  "PROFILE": [
+    [
+      {"text": "\uD83D\uDD51 Изменить время оповещения", "type": "callback", "data": "profile:change_notification_time"}
+    ],
+    [
+      {"text": "⬅ Назад", "type": "callback", "data": "menu"}
+    ]
+  ],
+  "INFO": [
+    [
+      {"text": "⬅ Назад", "type": "callback", "data": "menu"}
+    ]
+  ],
+  "REPORT": [
+    [
+      {"text": "❗ Оспорить задание", "type": "callback", "data": "report:question"}
+    ],
+    [
+      {"text": "❓ Задать вопрос", "type": "url", "data": "https://t.me/mthd_chat"}
+    ],
+    [
+      {"text": "⬅ Назад", "type": "callback", "data": "menu"}
+    ]
+  ],
+  "SESSION": [
+    [
+      {"text": "\uD83D\uDCAA Начать подход", "type": "callback", "data": "session:start"}
+    ],
+    [
+      {"text": "⭕ Работа над ошибками", "type": "callback", "data": "session:mistakes"}
+    ],
+    [
+      {"text": "⬅ Назад", "type": "callback", "data": "menu"}
+    ]
+  ],
+  "ERROR": [
+    [
+      {"text": "🏠 В главное меню", "type": "callback", "data": "menu"}
+    ]
+  ],
+  "STATISTIC": [
+    [
+      {"text": "1", "type": "callback", "data": "statistic:1"},
+      {"text": "2", "type": "callback", "data": "statistic:2"},
+      {"text": "3", "type": "callback", "data": "statistic:3"}
+    ],
+    [
+      {"text": "4", "type": "callback", "data": "statistic:4"},
+      {"text": "5", "type": "callback", "data": "statistic:5"}
+    ],
+    [
+      {"text": "⬅ Назад", "type": "callback", "data": "menu"}
+    ]
+  ],
+  "SESSION_END": [
+    [
+      {"text": "🏠 В главное меню", "type": "callback", "data": "menu"}
+    ]
+  ],
+  "REGISTER": [
+    [
+      {"text": "😸 Давай", "type": "callback", "data": "register:start"}
+    ]
+  ],
+  "ROLES": [
+    [
+      {"text": "👑 Принести дары", "type": "callback", "data": "register:rules_accept"}
+    ]
+  ],
+  "SET_NOTIFICATION": [
+    [
+      {"text": "12:00", "type": "callback", "data": "time:12"},
+      {"text": "13:00", "type": "callback", "data": "time:13"},
+      {"text": "14:00", "type": "callback", "data": "time:14"}
+    ],
+    [
+      {"text": "15:00", "type": "callback", "data": "time:15"},
+      {"text": "16:00", "type": "callback", "data": "time:16"},
+      {"text": "17:00", "type": "callback", "data": "time:17"}
+    ],
+    [
+      {"text": "18:00", "type": "callback", "data": "time:18"},
+      {"text": "19:00", "type": "callback", "data": "time:19"},
+      {"text": "20:00", "type": "callback", "data": "time:20"}
+    ]
+  ],
+  "TRIAL_PERIOD": [
+    [
+      {"text": "🎉 Отлично!", "type": "callback", "data": "trial_period_accept"}
+    ]
+  ],
+  "FIRST_SESSION": [
+    [
+      {"text": "😸 Я готов, давай начнём!", "type": "callback", "data": "first_session:start"}
+    ],
+    [
+      {"text": "😿 Сейчас не могу", "type": "callback", "data": "first_session:skip"}
+    ]
+  ],
+  "SUBSCRIBE_INACTIVE": [
+    [
+      {"text": "💳 Приступить к оплате", "type": "callback", "data": "payment_start"}
+    ],
+    [
+      {"text": "🏠 В главное меню", "type": "callback", "data": "menu"}
+    ]
+  ],
+  "SUCCESSFUL_PAYMENT": [
+    [
+      {"text": "🏠 В главное меню", "type": "callback", "data": "menu"}
+    ]
+  ],
+  "STATISTIC_SECTION": [
+    [
+      {"text": "⬅ Назад", "type": "callback", "data": "menu:statistic"}
+    ]
+  ],
+  "GO_TO_SESSION": [
+    [
+      {"text": "\uD83D\uDCDD Начать Cессию", "type": "callback", "data": "menu:session"}
+    ]
+  ],
+  "GO_TO_OFFER": [
+    [
+      {"text": "👀 Что мне даст полный доступ?", "type": "callback", "data": "buy_subscribe"}
+    ]
+  ],
+  "NOT_ENOUGH_QUESTIONS": [
+    [
+      {"text": "⬅ Назад", "type": "callback", "data": "menu:session"}
+    ]
+  ]
+}

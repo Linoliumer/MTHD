@@ -1,0 +1,58 @@
+{% extends 'wrapper_auth.html' %}
+
+{% block head %}
+    <title>Auth | ExamBot</title>
+{% endblock %}
+
+{% block content %}
+<div class="authorization container text-center col-12 col-md-4">
+      <div class="authorization_form">
+        <h3>Authorization</h3>
+        <hr align="center" width="200" size="2" color="#45A29E"/>
+        <div class="form-group">
+          <input type="text" class="form-control" id="inputEmail" placeholder="email">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" id="inputPassword" placeholder="password">
+        </div>
+        <a href="" class="auth-button" id="auth-send">Enter</a>
+      </div>
+    </div>
+{% endblock %}
+{% block script %}
+<script>
+  $(document).ready(function(){
+    $('#auth-send').on('click', function(e) {
+      e.preventDefault();
+      Noty.overrideDefaults({
+        layout   : 'bottomRight',
+        theme: 'sunset',
+        timeout: 3000,
+      });
+      email = $("#inputEmail").val();
+      password = $("#inputPassword").val();
+      var data = new FormData();
+      data.append("username", email);
+      data.append("password", password);
+      $.ajax({
+        url: "auth/jwt/login",
+        type: "POST",
+        processData: false,
+        contentType: false,
+        data: data,
+        success: function(result){
+          window.location.href = "/index";
+        },
+        error: function(data){
+          new Noty({
+            text: 'Ошибка',
+          }).show();
+        }
+      });
+      return !1;
+    });
+  });
+</script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+{% endblock %}

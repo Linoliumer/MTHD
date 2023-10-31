@@ -1,0 +1,107 @@
+{% extends 'wrapper_index.html' %}
+
+{% block head %}
+    <title>Question Table | ExamBot</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/questions_table.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="questions container-fluid text-center col-12 col-md-10">
+  <div class="questions_table">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"><input type="checkbox" id="select-all"/></th>
+          <th scope="col">Question ID</th>
+          <th scope="col">Type</th>
+          <th scope="col">Section</th>
+          <th scope="col">Element</th>
+          <th scope="col">Question Text</th>
+          <th scope="col">Answer</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for question in questions %}
+        <tr>
+          <th><input type="checkbox" id="{{question.question_id}}"/></th>
+          <th>{{question.question_id}}</th>
+          <th>{{question.type}}</th>
+          <th>{{question.section}}</th>
+          <th>{{question.element}}</th>
+          <td>
+            <p>
+              <a class="switch-button" data-toggle="collapse" href="#{{question.question_id}}_text" role="button" aria-expanded="false" aria-controls="{{question.question_id}}_text">
+                Показать
+              </a>
+            </p>
+            <div class="collapse" id="{{question.question_id}}_text">
+              <div class="card card-body text_question">
+                {{question.question_text}}
+              </div>
+            </div>
+          </td>
+          <td>{{question.answer_user}}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    <div class="row">
+      <div class="col mx-auto">
+        {% if number_list != 1 %}
+        <div class="element">
+          <a href="/questions/table/{{number_list-1}}" class="switch-button">Back</a>
+        </div>
+        {% endif %}
+      </div>
+      <div class="col mx-auto">
+        <div class="element">
+          <a href="#" class="delete-button">Delete</a>
+        </div>
+      </div>
+      <div class="col mx-auto">
+        <div class="element">
+          <a href="/questions/table/{{number_list+1}}" class="switch-button">Next</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+$(document).ready(function(){
+  $('#delete-button').on('click', function(e) {
+    e.preventDefault();
+    Noty.overrideDefaults({
+      layout   : 'bottomRight',
+      theme: 'sunset',
+      timeout: 3000,
+    });
+    var arrayOfChecked = [];
+    $('input[type="checkbox"]:checked').each(function() {
+      arrayOfChecked.push(this.value)
+      //console.log(this.value);
+    });
+    $.ajax({
+      url: "/questions/delete",
+      type: "POST",
+      processData: false,
+      contentType: false,
+      data: data,
+      success: function(result){
+        new Noty({
+          text: 'Успешно',
+        }).show();
+      },
+      error: function(data){
+        new Noty({
+          text: 'Ошибка',
+        }).show();
+      }
+    });
+    return !1;
+  });
+});
+</script>
+{% endblock %}

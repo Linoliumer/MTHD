@@ -1,0 +1,72 @@
+body{
+  background-blend-mode: multiply;
+  background-color: rgba(31, 40, 51, 0.95);
+
+}
+
+.navbar{
+  background-color: #1F2833;
+  background-size: 20px 20px;
+}
+.brand-image{
+  border-radius: 100px;
+  border: 3px solid #0B0C10;
+  background-color: white;
+  height: 60px;
+  width: 60px;
+}
+.menu-sm{
+  background-color: #1F2833;
+  font-size: 10px;
+}
+.menu-sm-button{
+  margin-top: 3px;
+  height: 55px;
+  margin-bottom: 3px;
+}
+.menu-sm-image{
+  border-radius: 100px;
+  border: 3px solid #0B0C10;
+  background-color: white;
+  height: 35px;
+  width: 35px;
+}
+.menu-md{
+  background-color: #1F2833;
+  border-right: 1px solid #0B0C10;
+  font-size: 14px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  height: 100vh;
+}
+.menu-md-button{
+  padding-top: 10px;
+}
+
+.menu-md-image{
+  border-radius: 100px;
+  border: 3px solid #0B0C10;
+  background-color: white;
+  height: 50px;
+  width: 50px;
+}
+.button-text-collor{
+  color: white;
+}
+
+a:link{
+    text-decoration: underline;
+    color: #66FCF1;
+}
+a:hover{
+   text-decoration: none;
+    color: #66FCF1;
+}
+a:active{
+    text-decoration: none;
+    color: #66FCF1;
+}
+a:visited{
+    text-decoration: none;
+    color: #66FCF1;
+}
